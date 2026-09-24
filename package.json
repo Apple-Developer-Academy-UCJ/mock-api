@@ -1,0 +1,29 @@
+{
+  "name": "ecommerce-mock-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "dev:tunnel": "concurrently --kill-others --names api,tunnel \"npm run dev\" \"npm run tunnel\"",
+    "tunnel": "cloudflared tunnel --config ./cloudflared.yml --url http://127.0.0.1:${PORT:-3000}",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.test.json",
+    "test": "tsx --test tests/*.test.ts",
+    "db:reset": "tsx src/reset.ts"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.0.0",
+    "concurrently": "^10.0.5",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

@@ -1,0 +1,3 @@
+# Keep Quick Tunnel settings separate from ~/.cloudflared/config.yml.
+# The origin URL is supplied by the npm tunnel command.
+{}
